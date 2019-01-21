@@ -10,7 +10,6 @@ from keras.layers.convolutional import MaxPooling1D
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 from keras.utils import to_categorical
-import tensorflowjs as tfjs
 
 #DB query to get dataset and establish classes
 
@@ -84,5 +83,4 @@ model.fit(X_train, y_train, epochs=3, batch_size=256)
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
-model.save('shelfmark_floor_classifier.h5')
-tfjs.converters.save_keras_model(model, "classifier_floors_main_library")
+model.save('floor_classifier.h5')
