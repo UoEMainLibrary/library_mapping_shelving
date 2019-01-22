@@ -26,14 +26,13 @@ def get_shelfmark_type(shelfmark):
     X.append(x)
     X = sequence.pad_sequences(X, maxlen=25)#this may vary and is determined by the scripts fro training the classifiers
     class_num = model.predict(X, batch_size=None, verbose=0, steps=None)
-    #n.b the below is wrong, but works, as the softmax layer returns a number greater than 1 for the incorrect result
-    library_of_congress_output = float(class_num[0][0])#library_of_congress
-    dewey_decimal_output = float(class_num[0][1])#dewey_decimal
+    library_of_congress_output = float(class_num[0][1])#library_of_congress
+    dewey_decimal_output = float(class_num[0][0])#dewey_decimal
     if dewey_decimal_output > library_of_congress_output:
-        class_name = 'Library of Congress'
+        class_name = 'Dewey Decimal'
         class_num = 0
     else:
-        class_name = 'Dewey Decimal'
+        class_name = 'Library of Congress'
         class_num = 1
     return_value = {}
     return_value['shelfmark'] = shelfmark
