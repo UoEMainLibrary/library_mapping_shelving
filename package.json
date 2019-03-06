@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "d3": "^5.9.1",
     "konva": "^2.5.1",
     "mysql": "^2.16.0",
     "three": "^0.99.0",
+    "threex": "^1.0.0",
+    "threex.domevents": "^1.0.1",
     "vue-konva": "^2.0.0"
   },
   "devDependencies": {

@@ -12,7 +12,8 @@ def output_json(output, library, floor):
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    passwd="Cr@n1eri",
+    password="",
+    #passwd="Cr@n1eri",
     port='3306',
     charset='utf8'
 )
@@ -38,8 +39,6 @@ for library in libraries:
         query = """SELECT JSON_OBJECT(
         'id',elements.id,
         'name', `name`,
-        'color',color,
-        'depth',depth,
         'svg_path', svg_path,
         'width', width,
         'height',height,
@@ -64,6 +63,7 @@ for library in libraries:
         JOIN element_types
         ON elements.element_type_id = element_types.id
         WHERE library = '"""+library+"""'
+        AND name = 'Shelf'
         AND floor = """+floor+""";"""
         cursor.execute(query)
         output = []
