@@ -14,6 +14,33 @@ from keras.utils import to_categorical
 
 app = Flask(__name__)
 
+@app.route('/range/<shelfmark>')
+def get_range(shelfmark):
+    print (shelfmark)
+    model = keras.models.load_model('range_classifier.h5')
+    class_name = ''
+    class_num = ''
+    x = []
+    for i in shelfmark:
+        x.append(ord(i))
+    X = []
+    X.append(x)
+    X = sequence.pad_sequences(X, maxlen=10)
+    class_num = model.predict(X, batch_size=None, verbose=0, steps=None)[0]
+    counter = 1
+    floor_number = 0
+    prob = 0
+    while counter < len(class_num):
+        if float(class_num[counter]) > prob:
+            prob = class_num[counter]
+            class_number = counter
+        counter += 1
+    reference_list = ['4629', '4635', '4626', '4824', '4966', '4969', '4819', '4625', '4960', '4820', '4962', '4813', '4816', '4968', '4821', '4961', '4957', '4964', '4814', '4624', '4822', '4812', '4823', '4958', '4631', '4971', '4811', '4899', '4746', '4810', '4630', '4817', '4825', '4959', '5197', '4818', '4963', '4965', '4634', '4628', '4632', '4633', '4967', '4900', '4815', '4956', '4745', '6125', '4627']
+    return_value = {}
+    return_value['range_id'] = reference_list[class_number]
+    keras.backend.clear_session()
+    return json.dumps(return_value)
+
 @app.route('/shelfmark/<shelfmark>')
 def get_shelfmark_type(shelfmark):
     model = keras.models.load_model('shelfmark_classifier.h5')
