@@ -1,7 +1,9 @@
 import numpy
 import csv
 import random
-import mysql.connector
+#use MySQLdb on server
+#import mysql.connector
+import MySQLdb
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
@@ -14,12 +16,13 @@ import tensorflowjs as tfjs
 
 
 """Connect to database"""
-mydb = mysql.connector.connect(
+mydb = MySQLdb.connect(
     host="localhost",
     user="root",
-    password="",
-    #passwd="Cr@n1eri",
-    port='3306',
+    #user="root",
+    #password="",
+    passwd="Cr@n1eri",
+    port=3306,
     charset='utf8'
 )
 

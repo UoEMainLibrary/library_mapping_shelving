@@ -1,4 +1,6 @@
-import mysql.connector
+#use MySQLdb on server
+#import mysql.connector
+import MySQLdb
 import json
 
 def output_json(output, library, floor):
@@ -9,12 +11,14 @@ def output_json(output, library, floor):
     f = open(library+str(floor)+'.json', 'w')
     f.write(json.dumps(output_dict))
     f.close()
-mydb = mysql.connector.connect(
+    
+mydb = MySQLdb.connect(
     host="localhost",
     user="root",
-    password="",
-    #passwd="Cr@n1eri",
-    port='3306',
+    #user="root",
+    #password="",
+    passwd="Cr@n1eri",
+    port=3306,
     charset='utf8'
 )
 

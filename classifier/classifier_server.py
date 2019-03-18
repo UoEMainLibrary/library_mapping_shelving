@@ -14,6 +14,10 @@ from keras.utils import to_categorical
 
 app = Flask(__name__)
 
+@app.route('/update_ranges/')
+def update_ranges():
+    pass
+
 @app.route('/range/<shelfmark>')
 def get_range(shelfmark):
     print (shelfmark)
@@ -35,6 +39,7 @@ def get_range(shelfmark):
             prob = class_num[counter]
             class_number = counter
         counter += 1
+    #This needs updating so as to not be hard-coded
     reference_list = ['4629', '4635', '4626', '4824', '4966', '4969', '4819', '4625', '4960', '4820', '4962', '4813', '4816', '4968', '4821', '4961', '4957', '4964', '4814', '4624', '4822', '4812', '4823', '4958', '4631', '4971', '4811', '4899', '4746', '4810', '4630', '4817', '4825', '4959', '5197', '4818', '4963', '4965', '4634', '4628', '4632', '4633', '4967', '4900', '4815', '4956', '4745', '6125', '4627']
     return_value = {}
     return_value['range_id'] = reference_list[class_number]
@@ -87,6 +92,7 @@ def get_floor(shelfmark):
             prob = class_num[counter]
             class_number = counter
         counter += 1
+    #this needs updating, so it is not hard-coded
     reference_list = [['2', 'Main Library  (REFERENCE) - 2nd floor'],
     ['2', 'Main Library  (SHORT LOAN) - 2nd floor'],
     ['2', 'Main Library  (STANDARD LOAN) - 2nd floor'],
