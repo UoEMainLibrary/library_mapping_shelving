@@ -39,7 +39,7 @@ export default {
       // push these to remote api, possibly using axios
       this.$axios({
         method: 'post',
-        url: '', // url of end point
+        url: 'http://127.0.0.1:5000/update_ranges/', // url of end point
         data: {elements: this.elements}
       })
         .then(function (response) {

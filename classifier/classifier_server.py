@@ -14,9 +14,10 @@ from keras.utils import to_categorical
 
 app = Flask(__name__)
 
-@app.route('/update_ranges/')
+@app.route('/update_ranges/', methods=['POST'])
 def update_ranges():
-    pass
+    content = request.get_json()
+    print (content)
 
 @app.route('/range/<shelfmark>')
 def get_range(shelfmark):
