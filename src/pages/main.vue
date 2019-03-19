@@ -65,22 +65,22 @@ export default {
           let h = element['height']
           // x,y modifications for each tab
           if (floorName === 'main3') {
-            x = x / 1.7
+            x = x / 2.3
             y = (y * 1.4) + 600
             w = w * 1.5
           }
           if (floorName === 'main4') {
-            x = x / 1.7
+            x = x / 2.3
             y = (y * 1.4) - 1750
             w = w * 1.5
           }
           if (floorName === 'main5') {
-            x = x / 1.7
+            x = x / 2.3
             y = (y * 1.4) + 600
             w = w * 1.5
           }
           let rotate = ''
-          let scale = 0.5
+          let scale = 1
           let shelfmark = ''
           if (element['range_start_digits'] != null) {
             shelfmark = element['range_start_letters'] + ' ' + element['range_start_digits'] + ' - ' + element['range_end_letters'] + ' ' + element['range_end_digits']
@@ -92,7 +92,7 @@ export default {
           let rectangle = canvas.append('rect')
             .attr('x', x * scale)
             .attr('y', y * scale)
-            .attr('width', w * scale)
+            .attr('width', w * 0.5)
             .attr('height', h * scale)
             .style('fill', 'white')
             .style('opacity', '1')

@@ -58,7 +58,7 @@ export default {
           let h = ''
           let w = ''
           let rotate = ''
-          let scale = 0.6
+          let scale = 1
           let shelfmark = ''
           if (element['range_start_digits'] != null) {
             shelfmark = element['range_start_letters'] + ' ' + element['range_start_digits'] + ' - ' + element['range_end_letters'] + ' ' + element['range_end_digits']
@@ -76,7 +76,7 @@ export default {
           let rectangle = canvas.append('rect')
             .attr('x', x * scale)
             .attr('y', y * scale)
-            .attr('width', w * scale)
+            .attr('width', w * 0.5)
             .attr('height', h * scale)
             .style('fill', 'white')
             .style('opacity', '1')
